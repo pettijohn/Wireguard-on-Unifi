@@ -122,7 +122,7 @@ That's it. Repeat on your phone or additional devices, then activate the VPN.
 
 ## Bonus - Dynamic DNS with Cloudflare
 
-[This guide from Unifi](https://help.ui.com/hc/en-us/articles/204976324-EdgeRouter-Custom-Dynamic-DNS) didn't work for my, but [forum posts](https://community.ui.com/questions/SOLVED-Cloudflare-DDNS-1-9-0/fbe64c70-db03-4449-a046-3edc30aa9e8b?page=2) had a fix. Here's the full solution; substitute `eth0` with the WAN interface that has a public IP:
+[This guide from Unifi](https://help.ui.com/hc/en-us/articles/204976324-EdgeRouter-Custom-Dynamic-DNS) didn't work for me, but [forum posts](https://community.ui.com/questions/SOLVED-Cloudflare-DDNS-1-9-0/fbe64c70-db03-4449-a046-3edc30aa9e8b?page=2) had the fix. Here's the full solution; substitute `eth0` with the WAN interface that has a public IP:
 
 ```
 configure
