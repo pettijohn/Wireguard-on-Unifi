@@ -119,3 +119,27 @@ That's it. Repeat on your phone or additional devices, then activate the VPN.
 * https://www.erianna.com/wireguard-ubiquity-edgeos/
 * https://blog.usman.network/posts/wireguard-vpn-on-a-ubiquiti-edgerouter/
 * https://github.com/WireGuard/wireguard-vyatta-ubnt/wiki/EdgeOS-and-Unifi-Gateway
+
+## Bonus - Dynamic DNS with Cloudflare
+
+[This guide from Unifi](https://help.ui.com/hc/en-us/articles/204976324-EdgeRouter-Custom-Dynamic-DNS) didn't work for my, but [forum posts](https://community.ui.com/questions/SOLVED-Cloudflare-DDNS-1-9-0/fbe64c70-db03-4449-a046-3edc30aa9e8b?page=2) had a fix. Here's the full solution; substitute `eth0` with the WAN interface that has a public IP:
+
+```
+configure
+set service dns dynamic interface eth0 service custom-cloudflare host-name <subdomain.domain.com>
+set service dns dynamic interface eth0 service custom-cloudflare login <user@domain.com>
+set service dns dynamic interface eth0 service custom-cloudflare password <cloudflare-api-key>
+set service dns dynamic interface eth0 service custom-cloudflare protocol cloudflare
+set service dns dynamic interface eth0 service custom-cloudflare options "zone=domain.com ssl=yes"
+set service dns dynamic interface eth0 service custom-cloudflare server api.cloudflare.com/client/v4
+commit ; save; exit
+```
+
+The last two are clutch - `ssl=yes` and *no trailing slash* on the server URL. And don't mess with the name - it needs to be `custom-cloudflare`.
+
+Verify and/or update:
+
+```
+show dns dynamic status
+update dns dynamic interface eth0
+```
