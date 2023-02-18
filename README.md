@@ -6,7 +6,7 @@ This document is a brief supplementary tutorial to augment the [wireguard-vyatta
 
 * Determine the public IP address of your EdgeRouter and, if required, set up dynamic DNS. 
 * SSH enabled on EdgeRouter 
-* WireGuard [installed](https://github.com/WireGuard/wireguard-vyatta-ubnt/wiki/EdgeOS-and-Unifi-Gateway) on EdgeRouter 
+* WireGuard [installed](https://github.com/vchrizz/ER-wizard-WireGuard) on EdgeRouter - you may need to [BYO private key](https://github.com/vchrizz/ER-wizard-WireGuard/issues/14), in my case it's in `/config/auth/wg.key` from the [original installation](https://github.com/WireGuard/wireguard-vyatta-ubnt).
 
 ## Step-by-step 
 
