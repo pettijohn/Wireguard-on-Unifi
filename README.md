@@ -143,3 +143,19 @@ Verify and/or update:
 show dns dynamic status
 update dns dynamic interface eth0
 ```
+
+## Upgrading ER-X firmware with ER-wizard-WireGuard
+
+This wizard makes configuring everything a breeze https://github.com/vchrizz/ER-wizard-WireGuard/issues/32
+
+However, I had issues upgrading firmware on ER-X, as per the issue above.
+
+After firmware upgrade, I had to manually download Wireguard and install it
+
+- On separate computer, download latest E50 v2 https://github.com/WireGuard/wireguard-vyatta-ubnt/releases
+- `scp .\e50-v2-v1.0.20220627-v1.0.20210914.deb admin@192.168.0.1:~`
+- `sudo dpkg -i ${BOARD}-${RELEASE}.deb`
+
+Next time I will increase the timeout in the shell script in the .tar file and re-create the wizard.
+
+Proper upgrade procedure appears to be to enable the `Setup Script` checkbox on the Wizard. Note that the script runs on load of page `#Wizard/feature/WireGuard`. Clicking apply saves config but does not seem to trigger the workflow of verifying wireguard is installed. 
